@@ -15,5 +15,6 @@ class PageAccessor(object):
        connection_name = "feed",
        message = passedMessage)
     
-  def postImage(self):
-    print("*posts image* (Not implemented yet!)")
+  def postImage(self, imgName):
+    self.graph.put_photo(image=open(imgName, 'rb'))
+    print("photo uploaded")

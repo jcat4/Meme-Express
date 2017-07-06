@@ -2,6 +2,7 @@ from PageAccess import PageAccessor
 from DriveAccess import DriveAccessor
 
 import json
+import os
 
 fileDir = "/home/cabox/workspace/Meme Express Info.json"
 with open(fileDir) as secretFile:
@@ -16,7 +17,14 @@ driveAccessor = DriveAccessor(\
   data["drive"]["test_backup_folder_id"])
 
 # Grab and download meme, if any
-driveAccessor.downloadMeme()
+imgName = driveAccessor.getMeme()
 
-# Post meme to facebook page
-pageAccessor.postImage()
+# Post meme if available
+if imgName is None:
+  print("No memes to post :(")
+else:
+  pageAccessor.postImage(imgName)
+  driveAccessor.backupMeme(imgName)
+  os.remove(imgName)
+  
+print("All done!")
