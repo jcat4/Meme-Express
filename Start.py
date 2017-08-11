@@ -4,7 +4,9 @@ from DriveAccess import DriveAccessor
 import json
 import os
 
-fileDir = "/home/cabox/workspace/Meme Express Info.json"
+#fileDir = "/home/cabox/workspace/Meme Express Info.json" # development
+fileDir = "Meme Express Info.json"
+
 with open(fileDir) as secretFile:
   data = json.load(secretFile)
 
@@ -13,8 +15,8 @@ pageAccessor = PageAccessor(\
   data["facebook"]["token"], \
   data["facebook"]["page_id"])
 driveAccessor = DriveAccessor(\
-  data["drive"]["test_folder_id"], \
-  data["drive"]["test_backup_folder_id"])
+  data["drive"]["anime_folder_id"], \
+  data["drive"]["backup_folder_id"])
 
 # Grab and download meme, if any
 imgName = driveAccessor.getMeme()

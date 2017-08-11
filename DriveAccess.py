@@ -3,7 +3,8 @@ from pydrive.drive import GoogleDrive
 
 import re
 
-CREDENTIALS_PATH = "/home/cabox/workspace/Drive Credentials.txt"
+#CREDENTIALS_PATH = "/home/cabox/workspace/Drive Credentials.txt" # development
+CREDENTIALS_PATH = "Drive Credentials.txt"
 
 class DriveAccessor(object):
 
@@ -52,10 +53,7 @@ class DriveAccessor(object):
     print("Backing up file...")
     backupFile = self.drive.CreateFile({
       "parents": [{"kind": "drive#fileLink", "id": self.BACKUP_FOLDER_ID}]
-    })
+    }) 
     backupFile.SetContentFile(imgName)
     backupFile.Upload()
     self.imgFile.Delete()
-
-#file1 = drive.CreateFile({'title': 'Hello.txt'})
-#file1.Upload()
