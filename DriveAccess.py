@@ -1,6 +1,8 @@
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 
+from random import shuffle
+
 import re
 
 #CREDENTIALS_PATH = "/home/cabox/workspace/Drive Credentials.txt" # development
@@ -37,6 +39,7 @@ class DriveAccessor(object):
   def getMeme(self):
     print("Attempting to download file...")
     fileList = self.drive.ListFile({'q': "'" + self.ANIMEMES_FOLDER_ID + "' in parents and trashed=false"}).GetList()
+    shuffle(fileList)
     imgPattern = re.compile("image.*")
 
     for file in fileList:
