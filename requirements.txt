@@ -2,7 +2,7 @@ argparse==1.2.1
 chardet==2.0.1
 colorama==0.2.5
 enum34==1.0.4
-html5lib==0.999
+html5lib==0.99999999
 pathlib==1.0.1
 pyScss==1.3.3
 pycurl==7.19.3
